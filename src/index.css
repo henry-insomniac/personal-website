@@ -1,0 +1,10 @@
+@import "./assets/fonts/fonts.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Source Han Sans", "HarmonyOS Sans", "Inter", "Sora", "Work Sans",
+    sans-serif;
+}
