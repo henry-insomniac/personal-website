@@ -1,8 +1,29 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+import type { Config } from "tailwindcss";
+import typography from "@tailwindcss/typography";
+
+const config: Config = {
+  content: [
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
   theme: {
     extend: {
+      backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "gradient-conic":
+          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      },
+      // 可以添加自定义动画或颜色等
+      animation: {
+        "fade-in-up": "fadeInUp 0.6s ease-out",
+      },
+      keyframes: {
+        fadeInUp: {
+          from: { opacity: "0", transform: "translateY(20px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
+      },
       colors: {
         // 背景（主色）
         background: "#0D0D0D",
@@ -42,5 +63,6 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [typography],
 };
+export default config;

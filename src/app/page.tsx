@@ -1,103 +1,60 @@
-import Image from "next/image";
+// import Image from "next/image"; // 不再需要，因为 Image 用在 ListItem 中
+import ListItem from "@/components/ListItem";
+import AnimateFadeInUp from "@/components/AnimateFadeInUp"; // 导入共享组件
+
+// Mock Data
+const mockItems = [
+  {
+    type: "article" as const,
+    title: "理解 React Hooks",
+    description: "深入探讨 React Hooks 的概念和用法",
+    date: "2月15日",
+    href: "/articles/react-hooks",
+  },
+  {
+    type: "project" as const,
+    title: "Node.js 流程控制台",
+    description: "利用 Node.js 构建现代化命令行工具",
+    date: "1月28日",
+    href: "/projects/node-cli",
+  },
+  {
+    type: "travel" as const,
+    title: "日本山间小径",
+    description: "沿着长野县的宁静山路徒步旅行",
+    date: "1月9日",
+    href: "/travel/japan-trails",
+    imageUrl: "/placeholder-mountain.jpg", // 占位图片路径
+    tag: "旅行",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="space-y-16">
+      {/* Hero Section */}
+      <section className="text-center md:text-left pt-16 md:pt-24">
+        {/* 应用动画组件 */}
+        <AnimateFadeInUp>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-tight">
+            Hi, 我是 <span className="text-purple-400">Insomniac</span>,
+            <br className="hidden md:block" />
+            <span className="block mt-2 md:mt-0">一名前端工程师和摄影师</span>
+          </h1>
+        </AnimateFadeInUp>
+      </section>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      {/* Content List Section */}
+      <section className="space-y-8">
+        {mockItems.map((item, index) => (
+          <AnimateFadeInUp key={item.href} delay={`${index * 0.1 + 0.2}s`}>
+            <ListItem {...item} />
+          </AnimateFadeInUp>
+        ))}
+      </section>
     </div>
   );
 }
+
+// 不再需要本地定义
+// const AnimateFadeInUp: React.FC<...> = ...
