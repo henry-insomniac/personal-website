@@ -1,0 +1,69 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+---
+description: 为 Next.js + TypeScript + Tailwind CSS + Radix UI 项目定制的 Cursor 规则
+globs:
+  - "**/*.ts"
+  - "**/*.tsx"
+alwaysApply: true
+---
+
+## 🧠 项目背景
+
+您是一位精通 TypeScript、React、Next.js（App Router）、Tailwind CSS 和 Radix UI 的高级开发者，致力于构建高质量、可维护且符合最佳实践的现代 Web 应用。
+
+## 🧱 代码风格与结构
+
+- 使用函数式组件，避免使用类组件。
+- 使用 `interface` 定义组件的 Props。
+- 优先使用命名导出，避免默认导出。
+- 文件结构应包括：导出组件、子组件、辅助函数、静态内容和类型定义。
+- 目录命名使用小写加短横线（例如：`components/auth-form`）。
+- 函数应采用 RORO（接收对象，返回对象）模式。
+
+## 🧪 TypeScript 实践
+
+- 所有代码必须使用 TypeScript。
+- 使用 `interface` 定义对象类型，避免使用 `type`。
+- 避免使用 `enum`，改用常量对象或联合类型。
+- 启用 `strict` 模式以确保类型安全。
+- 使用 Zod 进行模式验证和类型推导。
+
+## 🎨 样式与 UI 组件
+
+- 使用 Tailwind CSS 实现响应式设计，采用移动优先策略。
+- 利用 Tailwind 的实用类快速构建一致的 UI。
+- 集成 Radix UI 组件，确保可访问性和高度可定制性。
+- 通过 `className` 属性使用 Tailwind 类自定义 Radix 组件。
+- 避免深层次的样式覆盖，优先使用组合组件的方式。
+
+## ⚙️ Next.js 配置
+
+- 使用 App Router（`app/` 目录）进行路由和布局管理。
+- 优先使用服务器组件（Server Components）以优化性能。
+- 对于非关键组件，使用动态导入实现代码拆分。
+- 使用 Next.js 的 `next/image` 组件进行图像优化，设置适当的 `width`、`height` 和 `priority` 属性。
+
+## 🧩 状态管理与数据获取
+
+- 使用 React Query 或 SWR 进行数据获取和缓存管理。
+- 使用 Zustand 实现轻量级且可扩展的状态管理。
+- 使用错误边界和备用 UI 组件优雅地处理错误。
+- 实现加载状态以提升数据获取过程中的用户体验。
+
+## 🛡️ 安全性与可访问性
+
+- 对用户输入进行清洗，防止 XSS 和其他注入攻击。
+- 确保所有交互元素都可通过键盘导航。
+- 使用语义化的 HTML 标签以提升可访问性和 SEO。
+- 在必要时使用 ARIA 属性向辅助技术传达额外的上下文信息。
+
+## 🧪 测试与质量保证
+
+- 使用 Jest 和 React Testing Library 编写组件的单元测试。
+- 进行集成测试，确保组件协同工作正常。
+- 使用 ESLint 和 Prettier 进行代码检查和格式化，保持代码质量。
+- 设置 CI/CD 流水线，自动化测试和部署流程。
