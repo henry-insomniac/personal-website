@@ -1,10 +1,12 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 interface ListItemProps {
-  type: "article" | "travel" | "project"; // 根据需要扩展
+  type: "article" | "travel" | "project";
   title: string;
   description: string;
   date: string;

@@ -3,6 +3,7 @@ import axios, {
   AxiosResponse,
   InternalAxiosRequestConfig,
 } from "axios";
+import https from "https";
 
 // 创建 axios 实例
 const service: AxiosInstance = axios.create({
@@ -11,6 +12,9 @@ const service: AxiosInstance = axios.create({
   headers: {
     "Content-Type": "application/json",
   },
+  httpsAgent: new https.Agent({
+    rejectUnauthorized: false,
+  }),
 });
 
 // 请求拦截器
@@ -27,8 +31,7 @@ service.interceptors.request.use(
 // 响应拦截器
 service.interceptors.response.use(
   (response: AxiosResponse) => {
-    const res = response.data;
-    return res;
+    return response.data;
   },
   (error: Error) => {
     console.error("请求错误:", error);
