@@ -10,7 +10,7 @@ const ArticleList = () => {
     const fetchArticles = async () => {
       try {
         const data = await getArticles();
-        setArticles(data);
+        setArticles(data.articles);
       } catch (err) {
         setError("获取文章列表失败");
         console.error(err);
