@@ -1,10 +1,9 @@
 "use client";
-
 import { getArticleById } from "@/api/article";
-import ArticleContent from "./ArticleContent";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { Article } from "@/api/article";
+import ArticleContent from "@/app/articles/ArticleContent";
 
 interface ArticleDetailProps {
   id: string;
