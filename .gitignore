@@ -46,3 +46,6 @@ nginx.conf
 # deploy
 deploy.sh
 deploy.exp
+
+nginx.conf
+
