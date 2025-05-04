@@ -11,6 +11,7 @@ interface ListItemProps {
   href: string;
   imageUrl?: string;
   tag?: string;
+  readTime?: number;
 }
 
 const ListItem: React.FC<ListItemProps> = ({
@@ -21,6 +22,7 @@ const ListItem: React.FC<ListItemProps> = ({
   href,
   imageUrl,
   tag,
+  readTime,
 }) => {
   const isTravel = type === "travel" && imageUrl;
 
@@ -43,7 +45,15 @@ const ListItem: React.FC<ListItemProps> = ({
               {title}
             </h2>
           </div>
-          <p className="text-sm text-gray-400 mb-2">{date}</p>
+          <div className="flex items-center gap-4 text-sm text-gray-400 mb-2">
+            <span>{date}</span>
+            {readTime && (
+              <>
+                <span>·</span>
+                <span>{readTime} 分钟阅读</span>
+              </>
+            )}
+          </div>
           <p className="text-base text-gray-300">{description}</p>
         </div>
         {isTravel && (
