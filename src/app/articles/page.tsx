@@ -65,7 +65,7 @@ export default function ArticlesPage() {
                 date={formatDate(article.created_at)}
                 href={`/articles/${article.id}`}
                 imageUrl={article.cover_thumb}
-                tag={article.tags[0]?.name}
+                tag={article.tags.map((tag) => tag.name)}
                 readTime={article.read_time}
               />
             </AnimateFadeInUp>

@@ -12,7 +12,7 @@ interface ListItemProps {
   date: string;
   href: string;
   imageUrl?: string;
-  tag?: string;
+  tag?: string[];
   readTime?: number;
 }
 
@@ -38,11 +38,15 @@ const ListItem: React.FC<ListItemProps> = ({
       >
         <div className={cn(isTravel ? "md:col-span-2" : "")}>
           <div className="flex items-center mb-3 space-x-3">
-            {tag && (
-              <span className="inline-flex items-center px-3 py-0.5 rounded-full text-xs font-medium bg-green-600/20 text-green-400">
-                {tag}
-              </span>
-            )}
+            {tag &&
+              tag.map((t) => (
+                <span
+                  key={t}
+                  className="inline-flex items-center px-3 py-0.5 rounded-full text-xs font-medium bg-green-600/20 text-green-400"
+                >
+                  {t}
+                </span>
+              ))}
             <h2 className="text-xl md:text-2xl font-semibold text-purple-400 group-hover:text-purple-300 transition-colors duration-200">
               {title}
             </h2>
