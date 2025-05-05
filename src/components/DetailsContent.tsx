@@ -54,7 +54,7 @@ export default function DetailsContent() {
         </div>
         <div className="bg-gray-800/80 rounded-lg shadow-lg p-6">
           {article.cover_image && (
-            <div className="relative w-full aspect-video rounded-md overflow-hidden mb-6">
+            <div className="relative w-full h-[200px] aspect-video rounded-md overflow-hidden mb-6">
               <Image
                 src={article.cover_image}
                 alt={article.title}

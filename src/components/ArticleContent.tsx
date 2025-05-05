@@ -13,12 +13,20 @@ interface ArticleContentProps {
 // 创建一个类型声明文件来解决 TypeScript 报错
 declare module "react-markdown" {
   interface CodeComponentProps {
-    node: any;
+    node: unknown;
     inline?: boolean;
     className?: string;
     children?: React.ReactNode;
   }
 }
+
+// 添加类型定义
+type CodeProps = {
+  inline?: boolean;
+  className?: string;
+  children: React.ReactNode;
+  [key: string]: unknown;
+};
 
 export default function ArticleContent({ content }: ArticleContentProps) {
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
@@ -28,8 +36,8 @@ export default function ArticleContent({ content }: ArticleContentProps) {
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
-          // @ts-ignore - 忽略类型检查，确保功能正常工作
-          code({ node, inline, className, children, ...props }) {
+          // @ts-expect-error ReactMarkdown组件类型定义问题
+          code({ inline, className, children, ...props }: CodeProps) {
             const match = /language-(\w+)/.exec(className || "");
             const code = String(children).replace(/\n$/, "");
 
@@ -48,7 +56,6 @@ export default function ArticleContent({ content }: ArticleContentProps) {
                       {copiedCode === code ? "已复制!" : "复制"}
                     </button>
                   </div>
-                  {/* @ts-ignore - 忽略类型检查 */}
                   <SyntaxHighlighter
                     language={match[1]}
                     style={atomDark}

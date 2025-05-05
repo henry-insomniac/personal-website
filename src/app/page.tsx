@@ -76,7 +76,7 @@ export default function Home() {
                   )}
                   href={`/details?id=${article.id}`}
                   imageUrl={article.cover_thumb}
-                  tag={article.tags[0]?.name}
+                  tag={article.tags.map((t) => t.name)}
                   readTime={article.read_time}
                 />
               </AnimateFadeInUp>

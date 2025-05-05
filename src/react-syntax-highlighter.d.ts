@@ -2,16 +2,16 @@ declare module "react-syntax-highlighter" {
   import { CSSProperties, ReactNode } from "react";
   export interface SyntaxHighlighterProps {
     language?: string;
-    style?: any;
+    style?: Record<string, unknown> | CSSProperties;
     children?: ReactNode;
     customStyle?: CSSProperties;
-    lineProps?: any;
+    lineProps?: Record<string, unknown>;
     className?: string;
     showLineNumbers?: boolean;
     startingLineNumber?: number;
     lineNumberStyle?: CSSProperties;
     wrapLines?: boolean;
-    [key: string]: any;
+    [key: string]: unknown;
   }
 
   export const Prism: React.ComponentType<SyntaxHighlighterProps>;
@@ -19,13 +19,14 @@ declare module "react-syntax-highlighter" {
 }
 
 declare module "react-syntax-highlighter/dist/cjs/styles/prism" {
-  export const atomDark: any;
-  export const vscDarkPlus: any;
-  export const dracula: any;
-  export const nord: any;
-  export const duotoneDark: any;
-  export const materialDark: any;
-  export const okaidia: any;
-  export const a11yDark: any;
-  export const nightOwl: any;
+  type SyntaxHighlighterStyle = Record<string, unknown>;
+  export const atomDark: SyntaxHighlighterStyle;
+  export const vscDarkPlus: SyntaxHighlighterStyle;
+  export const dracula: SyntaxHighlighterStyle;
+  export const nord: SyntaxHighlighterStyle;
+  export const duotoneDark: SyntaxHighlighterStyle;
+  export const materialDark: SyntaxHighlighterStyle;
+  export const okaidia: SyntaxHighlighterStyle;
+  export const a11yDark: SyntaxHighlighterStyle;
+  export const nightOwl: SyntaxHighlighterStyle;
 }

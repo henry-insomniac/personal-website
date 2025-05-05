@@ -10,7 +10,7 @@ const mockTravel = [
     date: "1月9日",
     href: "/travel/japan-trails",
     imageUrl: "/placeholder-mountain.jpg", // 使用首页的占位图
-    tag: "徒步",
+    tag: ["徒步"],
   },
   {
     type: "travel" as const,
@@ -19,7 +19,7 @@ const mockTravel = [
     date: "去年11月",
     href: "/travel/kyoto-autumn",
     imageUrl: "/placeholder-temple.jpg", // 需要新的占位图
-    tag: "文化",
+    tag: ["文化"],
   },
   {
     type: "travel" as const,
@@ -28,7 +28,7 @@ const mockTravel = [
     date: "去年12月",
     href: "/travel/iceland-aurora",
     imageUrl: "/placeholder-aurora.jpg", // 需要新的占位图
-    tag: "探险",
+    tag: ["探险"],
   },
 ];
 

@@ -12,7 +12,7 @@ interface ListItemProps {
   date: string;
   href: string;
   imageUrl?: string;
-  tag?: string[];
+  tag?: string | string[];
   readTime?: number;
 }
 
@@ -28,6 +28,9 @@ const ListItem: React.FC<ListItemProps> = ({
 }) => {
   const isTravel = type === "travel" && imageUrl;
 
+  // 处理tag可能是字符串或字符串数组的情况
+  const tagArray = tag ? (Array.isArray(tag) ? tag : [tag]) : [];
+
   return (
     <Link href={href} className="block group">
       <article
@@ -38,8 +41,8 @@ const ListItem: React.FC<ListItemProps> = ({
       >
         <div className={cn(isTravel ? "md:col-span-2" : "")}>
           <div className="flex items-center mb-3 space-x-3">
-            {tag &&
-              tag.map((t) => (
+            {tagArray.length > 0 &&
+              tagArray.map((t) => (
                 <span
                   key={t}
                   className="inline-flex items-center px-3 py-0.5 rounded-full text-xs font-medium bg-green-600/20 text-green-400"
